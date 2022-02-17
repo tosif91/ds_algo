@@ -7,9 +7,9 @@ public class Mazepaths {
 
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        // int n = sc.nextInt();
-        // int m = sc.nextInt();
-        ArrayList<String> paths = getMazePaths(0,0,2,2);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        ArrayList<String> paths = getMazePaths(0,0,n-1,m-1);
         System.out.println(paths);
 
     }
