@@ -21,3 +21,4 @@ while conv_to_decimal != 0:
     conv_to_decimal //= 10
 
 print(conv_to_b2)
+ 
