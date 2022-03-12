@@ -14,31 +14,27 @@ public class First {
         while (l <= r) {
             int sm =0;
 
-            if (dir == 1) {
-                if (ar[l] > 0) {
-                    sm += ar[l];
-                    l++;
-                } else if (ar[l] < 0) {
-                    chance = (chance == 1) ? 2 : 1;
+            if (dir == 1 || dir == 2) {   
+                int idx = (dir == 1) ?l:r;
+                if(ar[idx] >=0){
+                    sm += ar[idx];
+                    if(dir == 1)
+                        l++;
+                    else 
+                        r++;
+                    if(ar[idx] == 0){
+                        dir = 0;
+                        chance = (chance == 1) ?2:1;
+                    }
+
+                }else{
                     dir = 0;
-                } else {
-                    l++;
-                    chance = (chance == 1) ? 2 : 1;
-                    dir = 0;
+                    chance = (chance == 1) ?2:1;
                 }
-            } else if (dir == 2) {
-                if (ar[r] > 0) {
-                    sm += ar[r];
-                    r--;
-                } else if (ar[r] < 0) {
-                    chance = (chance == 1) ? 2 : 1;
-                    dir = 0;
-                } else {
-                    r--;
-                    chance = (chance == 1) ? 2 : 1;
-                    dir = 0;
-                }
-            } else {
+
+         
+            } 
+            else {
                 if (ar[l] < ar[r]) {
                     dir = 2;
                     sm += ar[r];
@@ -64,6 +60,6 @@ public class First {
                 t2 += sm;
         }
 
-        System.out.println(Math.abs(t1 - t2));
+        System.out.println(t1+" "+t2);
     }
 }
