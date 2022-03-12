@@ -15,8 +15,10 @@ while n1 != 0 or n2 != 0 or c != 0:
     if d >= b:
         c = d // b
         d = d % b
-    
+    else:
+        c=0
     conv += d * 10 ** pow
+    print(conv)
     n1 //= 10
     n2 //= 10
     pow +=1
