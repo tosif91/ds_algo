@@ -17,8 +17,6 @@ def baseAddition(p1,p2,b):
         p1 //=10
         p2 //=10        
     return add
-    
-# def ends here
 
 def multiplication(n2,d1,b):
     pow = 0
