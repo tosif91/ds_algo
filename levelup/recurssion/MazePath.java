@@ -33,44 +33,46 @@ public class MazePath {
 
     }
 
-    public static void printMazePaths2(int sr,int sc,int dr,int dc,int[][] dir,String[] dirS , String psf){
-        if(sr == dr && sc == dc){
+    public static void printMazePaths2(int sr, int sc, int dr, int dc, int[][] dir, String[] dirS, String psf) {
+        if (sr == dr && sc == dc) {
             System.out.println(psf);
             return;
         }
 
-        for(int d=0;d< dir.length;d++){
+        for (int d = 0; d < dir.length; d++) {
             int r = sr + dir[d][0];
             int c = sc + dir[d][1];
-            if(r <=dr && c <= dc && r >=0 && c >=0 )
-            printMazePaths2(r,c, dr, dc, dir, dirS, psf + dirS[d]);
+            if (r <= dr && c <= dc && r >= 0 && c >= 0)
+                printMazePaths2(r, c, dr, dc, dir, dirS, psf + dirS[d]);
         }
     }
 
-    public static void printMazePathsJump(int sr,int sc,int dr,int dc,int[][] dir,String[] dirS,String psf){
-        if(sr == dr && sc == dc){
+    public static void printMazePathsJump(int sr, int sc, int dr, int dc, int[][] dir, String[] dirS, String psf) {
+        if (sr == dr && sc == dc) {
             System.out.println(psf);
             return;
         }
 
-        for(int d =0;d<dir.length;d++){
-            for(int rad = 1;rad <= Math.max(dr,dc);rad++){
-                int r = sr + rad*dir[d][0];
-                int c = sc + rad*dir[d][1];
-                
-                if(r >=0 && c >=0 && r <= dr && c <= dc)
-                 printMazePathsJump(r, c, dr, dc, dir, dirS, psf+dirS[d]+rad);
+        for (int d = 0; d < dir.length; d++) {
+            for (int rad = 1; rad <= Math.max(dr, dc); rad++) {
+                int r = sr + rad * dir[d][0];
+                int c = sc + rad * dir[d][1];
+
+                if (r >= 0 && c >= 0 && r <= dr && c <= dc)
+                    printMazePathsJump(r, c, dr, dc, dir, dirS, psf + dirS[d] + rad);
             }
         }
     }
+ 
 
     public static void main(String[] args) {
-        
-        // printMazePaths(0, 0, 2, 2, "");
-        
-        int[][] dir = {{0,1},{1,0},{1,1}};
-        String[] dirS = {"H","V","D"};
-        // printMazePaths2(0, 0, 2, 2, dir, dirS, "");
+
+        printMazePaths(0, 0, 2, 2, "");
+        int[][] dir = { { 0, 1 }, { 1, 0 }, { 1, 1 } };
+        String[] dirS = { "H", "V", "D" };
+        printMazePaths2(0, 0, 2, 2, dir, dirS, "");
         printMazePathsJump(0, 0, 2, 2, dir, dirS, "");
-    }
+
+     
+     }
 }
