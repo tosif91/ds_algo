@@ -63,7 +63,7 @@ class Solution {
        
     }
 
-//APPROACH 2 : USING two dummy arrays of size row and column 
+//APPROACH 2 : USING two dummy arrays of size row and column {uses n+m extra space}
 
 class Solution1 {
     public void setZeroes(int[][] matrix) {
@@ -91,6 +91,58 @@ class Solution1 {
                 }
             }
         }
+        
+    }
+}
+
+// APPROACH 3 : INPLACE OF CREATING DUMMY ARRAYS USE 0th row and 0th columsn as dummy varaible , which will reduce extra space 
+
+// THIS IS MOST OPTIMAL APPROACH
+
+
+
+class Solution2 {
+    public void setZeroes(int[][] matrix) {
+        int m=matrix.length;
+        int n=matrix[0].length;
+        boolean row=false,col=false;
+        for(int i=0;i<n;i++){
+            if(matrix[0][i]==0){
+                row=true;
+            }
+        }
+        for(int j=0;j<m;j++){
+            if(matrix[j][0]==0){
+                col=true;
+            }
+        }
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                if(matrix[i][j]==0){
+                    matrix[0][j]=0;
+                    matrix[i][0]=0;
+                }
+            }
+        }
+     
+        
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                if(matrix[i][0] == 0 || matrix[0][j] == 0)
+                    matrix[i][j] = 0;
+            }
+        }
+        if(row){
+            for(int i=0;i<n;i++){
+                matrix[0][i]=0;
+            }
+        }
+        if(col){
+            for(int j=0;j<m;j++){
+                matrix[j][0]=0;
+            }
+        }
+        
         
     }
 }
